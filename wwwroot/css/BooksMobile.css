@@ -1,0 +1,17 @@
+﻿body {
+    background-image: url('../images/alfons-morales-ylswjsy7stw-unsplash.jpg');
+    background-position: center;  
+    color: white;
+    background-color: black;
+}
+
+table {
+    background-image: none;
+    color: white;
+    background-color: black;
+}
+
+.margin {
+    margin: 35px 50px;
+}
+

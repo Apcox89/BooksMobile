@@ -1,0 +1,60 @@
+﻿@*/* Andrew Cox
+    SD-733 Final
+    3.10.20 */*@
+
+@model IEnumerable<BooksMobile.Models.Book>
+@*
+    Page to act as over-due fees calculator:
+    Call your local variables to get:
+        --> if overdue displayed correctly
+            or if not.
+        --> See TransCheck's Controller for calculating/displaying due date.
+*@
+
+@{ //local variables in accordance with exam part[7]
+
+    DateTime today = DateTime.Today.Date;
+
+    DateTime bookdue = ViewBag.books.DateDue.Date;
+
+    double daycount = (today.Date - bookdue.Date).TotalDays;
+
+    double overdueFee = 0.12;
+
+    double totalFine = daycount * overdueFee;
+
+    String dateOnly = ViewBag.books.DateDue.ToShortDateString();
+
+    String.Format("{0:C}", totalFine);
+
+}
+<table class="margin">
+    <tr>
+        <td>
+            <h4>
+                @ViewBag.books.BookTitle due on
+                <br />
+                @dateOnly is currently:
+            </h4>
+
+            @{
+                if (today < bookdue)
+                {
+                    <h4> not overdue. </h4>
+                }
+                if (today > bookdue)
+                {
+
+                    <h4>
+                        overdue @daycount days for a fine of: <br />
+                        $@totalFine
+                    </h4>
+                }
+            }
+
+        </td>
+    </tr>
+
+</table>
+
+

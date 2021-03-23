@@ -1,0 +1,21 @@
+﻿@*/* Andrew Cox
+   SD-733 Final
+   3.10.20 */ *@
+
+@model BooksMobile.Models.Book
+@*Call to get the Model to pass through*@
+
+<h2> List of books checked out: </h2>
+
+<br />
+<br />
+
+<form asp-action="Calcfine">
+    <div class="form-horizontal">
+        <select asp-for="BookId" class="form-control" asp-items="ViewBag.listOfBooks "></select>
+    </div>
+    <br /><br />
+    <div class="form-group">
+        <input type="submit" value="Check if overdue" class="btn btn-default" />
+    </div>
+</form>

@@ -1,0 +1,42 @@
+﻿@*/* Andrew Cox
+    SD-733 Final
+    3.10.20 */ *@
+
+@model IEnumerable<BooksMobile.Models.Book>
+@*Call to get the Model to pass through*@
+
+
+@{
+    //local variable for checked out or not
+    bool checkedOut = false;
+
+    //ln23 passes the code for color changing text.
+
+}
+<table class="margin">
+    <thead>
+        <h2> Books by: @ViewBag.books.Author </h2>
+        <tr>
+            <td> <h3> Book title: </h3> </td>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td>
+                @{ checkedOut = ViewBag.books.CheckedOut;
+                    if (checkedOut == false)
+                    {
+                        <h3> <span class="text-success"> @ViewBag.books.BookTitle </span></h3>
+                    }
+                    else
+                    {
+                        <h3> <span class="text-danger"> @ViewBag.books.BookTitle </span></h3>
+                    }
+                }
+
+            </td>
+        </tr>
+    </tbody>
+
+</table>

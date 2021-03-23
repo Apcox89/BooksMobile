@@ -1,0 +1,21 @@
+﻿@*/* Andrew Cox
+    SD-733 Final
+    3.10.20 */ *@
+
+@model BooksMobile.Models.Book
+@*Model initialized for getting the code to work accordingly on the form display*@
+
+<h2> Select the author below: </h2>
+
+<br />
+<br />
+
+<form asp-action="ListAuthorBooks">
+    <div class="form-horizontal">
+        <select asp-for="BookId" class="form-control" asp-items="ViewBag.listOfAuthors"></select>
+    </div>
+    <br /><br />
+    <div class="form-group">
+        <input type="submit" value="List books by author" class="btn btn-default" />
+    </div>
+</form>

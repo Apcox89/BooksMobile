@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\Palmer\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Palmer\\.nuget\\packages"
+    ]
+  }
+}

@@ -1,0 +1,109 @@
+﻿@*/* Andrew Cox
+    SD-733 Final
+    3.10.20 */ *@
+
+@model IEnumerable<BooksMobile.Models.Book>
+
+@{
+    ViewData["Title"] = "Index";
+
+    //initialize local variable values to return correct View results of exam[4]pt.2
+    bool chckbox = false;
+
+    DateTime dt = new DateTime(12 / 31 / 2000);
+
+    //site.css contains "hidden" property for html elements.
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create" > Create new: </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BookTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YearPublished)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CallNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckedOut)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateDue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Patron)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    @* Code for Final Exam [4] pt 2. Index View modifcations here: *@
+
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.YearPublished)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CallNumber)
+                </td>
+
+                <td>
+                    @{ //No display of Checkboxes for Books' not checked out.
+                        chckbox = item.CheckedOut;
+                        if (chckbox == false)
+                        {
+                            <span class="hidden"> @Html.DisplayFor(modelItem => item.CheckedOut) </span>
+
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelitem => item.CheckedOut)
+                        }
+
+                    }
+                </td>
+                <td>
+                    @{ dt = item.DateDue;
+                        if (dt == Convert.ToDateTime("12/31/3000"))
+                        {
+                            <span class="hidden">  @Html.DisplayFor(modelItem => item.DateDue)</span>
+                        }
+                        else
+                        { @Html.DisplayFor(modelItem => item.DateDue) }
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Patron.FirstName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.BookId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.BookId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.BookId">Delete</a>
+                </td>
+            </tr>            
+
+        }
+    </tbody>
+</table>

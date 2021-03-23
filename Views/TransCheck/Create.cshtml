@@ -1,0 +1,22 @@
+﻿@*/* Andrew Cox
+    SD-733 Final
+    3.10.20 */ *@
+
+@model BooksMobile.Models.Book
+@*Model initialized for getting the code to work accordingly on the form display*@
+
+<h2> Checkout Book</h2>
+<h6> Select the book and patron below then click the 'Check Out' Button </h6>
+
+<form asp-action="CheckBookOut">
+    <div class="form-horizontal">
+        <select asp-for="BookId" class="form-control" asp-items="ViewBag.listOfBooks"></select>
+    </div>
+    <br /><br />
+    <div class="form-group">
+        <select asp-for="PatronId" class="form-control" asp-items="ViewBag.PatronIdList"></select>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Check Out" class="btn btn-default" />
+    </div>
+</form>
